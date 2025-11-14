@@ -23,7 +23,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public TaskModel save(@Valid @NotNull @RequestBody TaskModel task) {
+    public TaskModel  save(@Valid @NotNull @RequestBody TaskModel task) {
         return toDoRepo.save(task);
     }
 

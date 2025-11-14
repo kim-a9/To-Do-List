@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -14,7 +16,8 @@ public class TaskModel {
     public TaskModel() {
     }
 
-    public TaskModel(long id, String task, boolean status) {
+    @JsonCreator
+    public TaskModel(@JsonProperty("id") long id, @JsonProperty("task") String task, boolean done) {
         this.id = id;
         this.task = task;
         this.done = done;
