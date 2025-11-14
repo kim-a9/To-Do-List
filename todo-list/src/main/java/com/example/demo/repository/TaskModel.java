@@ -9,7 +9,7 @@ public class TaskModel {
     private long id;
     @NotBlank
     private String task;
-    private boolean status;
+    private boolean done;
 
     public TaskModel() {
     }
@@ -17,7 +17,7 @@ public class TaskModel {
     public TaskModel(long id, String task, boolean status) {
         this.id = id;
         this.task = task;
-        this.status = status;
+        this.done = done;
     }
 
     @Id
@@ -38,11 +38,11 @@ public class TaskModel {
         this.task = task;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isDone() {
+        return done;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setDone(boolean done) {
+        this.done = done;
     }
 }

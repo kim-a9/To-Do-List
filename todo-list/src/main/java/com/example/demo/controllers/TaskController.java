@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.repository.TaskModel;
 import com.example.demo.repository.ToDoRepository;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -17,12 +18,12 @@ public class TaskController {
     private ToDoRepository toDoRepo;
 
     @GetMapping
-    public List<Task> findAll(){
+    public List<TaskModel> findAll(){
         return toDoRepo.findAll();
     }
 
     @PostMapping
-    public Task save(@Valid @NotNull @RequestBody Task task) {
+    public TaskModel save(@Valid @NotNull @RequestBody TaskModel task) {
         return toDoRepo.save(task);
     }
 
