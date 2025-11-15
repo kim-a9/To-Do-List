@@ -27,4 +27,20 @@ public class TaskServices {
     public Optional<Task> getTaskId(Long id) {
         return taskRepo.findById(id);
     }
+
+    public Task updateTask(Long id, Task task) {
+        Optional<Task> t = taskRepo.findById(id);
+
+        if(t.isPresent()){
+            Task newTask = t.get();
+            newTask.setTask(task.getTask());
+            newTask.setDone(task.isDone());
+
+            return taskRepo.save(newTask);
+        }
+        else {
+            return null;
+        }
+
+    }
 }
