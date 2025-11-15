@@ -1,30 +1,37 @@
 package com.example.demo.controllers;
 
-import com.example.demo.repository.TaskModel;
-import com.example.demo.repository.ToDoRepository;
+import com.example.demo.model.Task;
+import com.example.demo.services.TaskServices;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.config.Task;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value="/todo")
 public class TaskController {
 
     @Autowired
-    private ToDoRepository toDoRepo;
-
-    @GetMapping
-    public List<TaskModel> findAll(){
-        return toDoRepo.findAll();
-    }
+    private TaskServices taskServices;
 
     @PostMapping
-    public TaskModel  save(@Valid @NotNull @RequestBody TaskModel task) {
-        return toDoRepo.save(task);
+    public Task createTask(@Valid @NotNull @RequestBody Task task) {
+       return taskServices.createTask(task);
     }
+
+    @GetMapping
+    public List<Task> findAllTasks() {
+        return taskServices.getAllTasks();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Task> findTaskId(@PathVariable Long id) {
+        return taskServices.getTaskId(id);
+    }
+
+
 
 }

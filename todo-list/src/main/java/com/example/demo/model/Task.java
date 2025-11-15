@@ -1,4 +1,4 @@
-package com.example.demo.repository;
+package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,17 +7,21 @@ import jakarta.validation.constraints.NotBlank;
 
 
 @Entity
-public class TaskModel {
+public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @NotBlank
     private String task;
+
     private boolean done;
 
-    public TaskModel() {
+    public Task() {
     }
 
     @JsonCreator
-    public TaskModel(@JsonProperty("id") long id, @JsonProperty("task") String task, boolean done) {
+    public Task(@JsonProperty("id") long id, @JsonProperty("task") String task, boolean done) {
         this.id = id;
         this.task = task;
         this.done = done;
