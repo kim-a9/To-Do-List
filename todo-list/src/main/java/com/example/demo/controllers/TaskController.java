@@ -5,6 +5,7 @@ import com.example.demo.services.TaskServices;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class TaskController {
 
     @Autowired
     private TaskServices taskServices;
+
 
     @PostMapping
     public Task createTask(@Valid @NotNull @RequestBody Task task) {

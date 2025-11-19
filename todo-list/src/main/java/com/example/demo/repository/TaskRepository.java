@@ -9,11 +9,10 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
 
 
-//   void delete(Long id);
 
 }
     // Go to: http://localhost:8080/h2-console
     //JDBC URL: jdbc:h2:mem:testdb
-    //Username: kim
+    //Username:
     //Password: password
 
